@@ -12,7 +12,7 @@ fi
 
 echo "MDSymLink check inprogress"
 
-for filedoc in $(find ./docs -type f -print | grep -i ".md$"); do
+for filedoc in $(find ./workspace/docs -type f -print | grep -i ".md$"); do
   sed -i -e '/^#/s/*//g' -e '/^#/s/_//g' -e '/^#/s/\`//g' "$filedoc"
   ./workspace/checkmdlinks.php --root=. "$filedoc"
 done
