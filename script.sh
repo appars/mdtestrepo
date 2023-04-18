@@ -5,7 +5,7 @@ if [ -f "/tmp/MDLinkCheck_Report.csv" ]; then
   echo "Old /tmp/MDLinkCheck_Report.csv report file deleted!"
 fi
 
-if [ ! -f "./checkmdlinks.php" ]; then
+if [ ! -f "./workspace/checkmdlinks.php" ]; then
   echo "checkmdlinks.php tool is not found!"
   exit 1
 fi
@@ -14,7 +14,7 @@ echo "MDSymLink check inprogress"
 
 for filedoc in $(find ./docs -type f -print | grep -i ".md$"); do
   sed -i -e '/^#/s/*//g' -e '/^#/s/_//g' -e '/^#/s/\`//g' "$filedoc"
-  ./checkmdlinks.php --root=. "$filedoc"
+  ./workspace/checkmdlinks.php --root=. "$filedoc"
 done
 
 echo "MDSymLink check completed!"
