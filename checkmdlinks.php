@@ -1,12 +1,8 @@
-#!/usr/local/bin/php
+#!/usr//bin/php
 <?php
 /**
  * This script will search the specified md files for markdown links
  * and check their validity.
- *
- * Contact Matthew Hoener (matthewh@ca.ibm.com) with any questions
- *
- * Last modified: 2017-05-17
  */
 
 // Helper functions
@@ -19,9 +15,7 @@ function printHelp(){
   echo "                      If not set, will use the current directory as the project root".PHP_EOL;
   echo "Example usage:".PHP_EOL;
   echo "Check all md files in a specific subdirectory for broken links".PHP_EOL;
-  echo "  $ checkmdlinks.php --root=/path/to/project-root /path/to/project-root/path/to/subdir/*.md".PHP_EOL;
-  echo "Check all md files within a project for broken links".PHP_EOL;
-  echo "  $ checkmdlinks.php --root=/path/to/project-root /path/to/project-root/**/*.md".PHP_EOL;
+  echo "  $ checkmdlinks.php --root=/path/to/project-root /path/to/project-root/path/to/docs/*.md".PHP_EOL;
 }
 
 // Colour string
