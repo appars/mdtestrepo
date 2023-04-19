@@ -1,4 +1,4 @@
-#!/usr//bin/php
+#!/usr/local/bin/php
 <?php
 /**
  * This script will search the specified md files for markdown links
