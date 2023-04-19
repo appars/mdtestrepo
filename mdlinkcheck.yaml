@@ -1,0 +1,43 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: mdlinkcheck-files
+spec:
+  resources:
+    inputs:
+      - name: repo
+        type: git
+        targetPath: workspace
+  steps:
+    - name: mdlinkcheck
+      image: php:7.4-cli
+      workingDir: /workspace
+      command: ["./workspace/script.sh"]
+---
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: mdlinkcheck-pipeline
+spec:
+  resources:
+    - name: git-repo
+      type: git
+  tasks:
+    - name: mdlinkcheck-task
+      taskRef:
+        name: mdlinkcheck-files
+      resources:
+        inputs:
+          - name: repo
+            resource: git-repo
+---
+apiVersion: tekton.dev/v1alpha1
+kind: PipelineResource
+metadata:
+  name: git-repo
+spec:
+  type: git
+  params:
+    - name: url
+      value: https://github.com/appars/mdtestrepo
+
